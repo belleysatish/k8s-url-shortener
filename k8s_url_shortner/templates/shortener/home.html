@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>URL Shortener</title>
+</head>
+<body>
+    <h1>URL Shortener</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="url" name="original_url" placeholder="Enter URL to shorten" required>
+        <button type="submit">Shorten</button>
+    </form>
+
+    {% if shortened_url %}
+    <p>Shortened URL: <a href="/{{ shortened_url.short_code }}">{{ request.get_host }}/{{ shortened_url.short_code }}</a></p>
+    {% endif %}
+</body>
+</html>
